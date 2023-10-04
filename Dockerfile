@@ -5,7 +5,7 @@ FROM node:18-alpine3.18 AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json ./
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile --registry=https://registry.npm.taobao.org
 
 # Rebuild the source code only when needed
 FROM node:18-alpine3.18 AS builder
